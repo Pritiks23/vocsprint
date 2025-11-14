@@ -31,8 +31,7 @@ function App() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(30, 27, 75, 0.3)', // Lighter overlay to see the image
-            backdropFilter: 'blur(1px)',
+            backgroundColor: 'rgba(30, 27, 75, 0.15)', // Very light overlay
             zIndex: 0,
           }
         }}
