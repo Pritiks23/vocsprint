@@ -1,10 +1,8 @@
 import React from 'react';
-
-
 import { Container, Typography, Grid } from '@mui/material';
 import TrainingModuleCard from '../components/TrainingModuleCard';
 
-const trainings = [
+export const trainings = [
   {
     title: 'Electrician Training',
     description: 'Hands-on modules for wiring, circuits, safety, and smart systems. Includes AR/VR practice and AI step-by-step coaching.',
@@ -3821,16 +3819,16 @@ All arc welding processes create an electrical arc between an electrode and the 
 export default function Home() {
   return (
     <Container maxWidth="md" sx={{ mt: 6 }}>
-      <Typography variant="h3" align="center" gutterBottom color="text.primary">
+      <Typography variant="h3" align="center" gutterBottom color="text.primary" sx={{ fontStyle: 'italic' }}>
         Welcome to VocSprint
       </Typography>
-      <Typography variant="h6" align="center" paragraph color="text.secondary">
+      <Typography variant="h6" align="center" paragraph color="text.secondary" sx={{ fontStyle: 'italic' }}>
         Empowering the next generation of skilled tradespeople with AI-driven training.
       </Typography>
       <Grid container spacing={4} sx={{ mt: 4 }}>
-        {trainings.map((t) => (
+        {trainings.map((t, index) => (
           <Grid item xs={12} md={4} key={t.title}>
-            <TrainingModuleCard title={t.title} description={t.description} lessons={t.lessons} />
+            <TrainingModuleCard title={t.title} description={t.description} lessons={t.lessons} moduleId={index} />
           </Grid>
         ))}
       </Grid>
