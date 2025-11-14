@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, Button, Collapse, List, ListItem, ListItemText, LinearProgress } from '@mui/material';
-
-const electricianLessons = [
-  { title: 'Intro to Electrical Safety', content: 'Learn about PPE, lockout/tagout, and safe work practices.' },
-  { title: 'Basic Wiring', content: 'Understand wiring diagrams, color codes, and hands-on wire connections.' },
-  { title: 'Circuits & Breakers', content: 'Explore circuit types, breaker panels, and troubleshooting.' }
-];
+import { Card, CardContent, Typography, Button, Collapse, List, ListItem, ListItemText, LinearProgress, Checkbox } from '@mui/material';
+import LessonDialog from './LessonDialog';
 
 export default function TrainingModuleCard({ title, description, lessons }) {
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const [completed, setCompleted] = useState(Array(lessons.length).fill(false));
+  const [selectedLesson, setSelectedLesson] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleLessonClick = (idx) => {
-    const newCompleted = [...completed];
-    newCompleted[idx] = !newCompleted[idx];
-    setCompleted(newCompleted);
-    setProgress((newCompleted.filter(Boolean).length / lessons.length) * 100);
+    setSelectedLesson({ ...lessons[idx], index: idx });
+    setDialogOpen(true);
+  };
+
+  const handleLessonComplete = () => {
+    if (selectedLesson) {
+      const newCompleted = [...completed];
+      newCompleted[selectedLesson.index] = true;
+      setCompleted(newCompleted);
+      setProgress((newCompleted.filter(Boolean).length / lessons.length) * 100);
+    }
   };
 
   return (
@@ -31,17 +35,41 @@ export default function TrainingModuleCard({ title, description, lessons }) {
           <LinearProgress variant="determinate" value={progress} sx={{ mb: 2 }} />
           <List>
             {lessons.map((lesson, idx) => (
-              <ListItem key={lesson.title} button onClick={() => handleLessonClick(idx)} selected={completed[idx]}>
+              <ListItem 
+                key={lesson.title} 
+                button 
+                onClick={() => handleLessonClick(idx)}
+                sx={{ 
+                  bgcolor: completed[idx] ? 'rgba(139, 92, 246, 0.1)' : 'transparent',
+                  borderRadius: 1,
+                  mb: 0.5
+                }}
+              >
+                <Checkbox 
+                  checked={completed[idx]} 
+                  color="primary" 
+                  sx={{ mr: 1 }}
+                  onClick={(e) => e.stopPropagation()}
+                />
                 <ListItemText
                   primary={lesson.title}
-                  secondary={completed[idx] ? lesson.content : ''}
-                  primaryTypographyProps={{ color: completed[idx] ? 'primary' : 'text.primary' }}
+                  primaryTypographyProps={{ 
+                    color: completed[idx] ? 'primary' : 'text.primary',
+                    fontWeight: completed[idx] ? 'bold' : 'normal'
+                  }}
                 />
               </ListItem>
             ))}
           </List>
         </Collapse>
       </CardContent>
+      <LessonDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        lesson={selectedLesson}
+        onComplete={handleLessonComplete}
+        isCompleted={selectedLesson ? completed[selectedLesson.index] : false}
+      />
     </Card>
   );
 }
