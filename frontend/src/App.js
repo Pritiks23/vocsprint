@@ -18,7 +18,7 @@ function App() {
       <Box
         sx={{
           minHeight: '100vh',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070)',
+          backgroundImage: 'url(/background.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
