@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import JobBoard from './pages/JobBoard';
 import ARVRSim from './pages/ARVRSim';
+import LessonPage from './pages/LessonPage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/lesson/:moduleId/:lessonId" element={<LessonPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/jobs" element={<JobBoard />} />
               <Route path="/arvr" element={<ARVRSim />} />
