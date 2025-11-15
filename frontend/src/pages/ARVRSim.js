@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -34,10 +35,12 @@ import {
   Close,
   Timer,
   EmojiEvents,
-  TrendingUp
+  TrendingUp,
+  ViewInAr
 } from '@mui/icons-material';
 
 const ARVRSim = () => {
+  const navigate = useNavigate();
   const [selectedSim, setSelectedSim] = useState(null);
   const [simActive, setSimActive] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -295,10 +298,53 @@ const ARVRSim = () => {
             AR/VR Training Simulations
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
-            Practice your skills in immersive virtual environments
+            Immersive hands-on practice in a safe virtual environment
           </Typography>
 
-          {/* Stats Banner */}
+          {/* 3D Universe Button */}
+          <Paper
+            elevation={4}
+            sx={{
+              p: 3,
+              mb: 4,
+              background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(0, 188, 212, 0.2) 100%)',
+              border: '2px solid rgba(139, 92, 246, 0.4)',
+              cursor: 'pointer',
+              transition: 'all 0.3s',
+              '&:hover': {
+                transform: 'scale(1.02)',
+                boxShadow: '0 12px 40px rgba(139, 92, 246, 0.3)',
+              }
+            }}
+            onClick={() => navigate('/arvr-3d')}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
+              <ViewInAr sx={{ fontSize: 48, color: '#8b5cf6' }} />
+              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#8b5cf6' }}>
+                Enter 3D Synthetic Universe
+              </Typography>
+            </Box>
+            <Typography variant="body1" sx={{ textAlign: 'center', color: 'text.secondary' }}>
+              Step into a fully immersive 3D world where you can interact with virtual objects, 
+              complete hands-on tasks, and master skills in a realistic environment
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, gap: 2 }}>
+              <Chip icon={<Psychology />} label="Interactive 3D Objects" color="secondary" />
+              <Chip icon={<Stars />} label="Real-time Physics" color="primary" />
+              <Chip icon={<EmojiEvents />} label="Hands-on Tasks" color="success" />
+            </Box>
+          </Paper>
+        </Box>
+
+        {/* Alert */}
+        <Alert severity="info" icon={<Psychology />} sx={{ mb: 4 }}>
+          <Typography variant="body1">
+            Practice your skills in immersive virtual environments
+          </Typography>
+        </Alert>
+
+        {/* Stats Banner */}
+        <Box sx={{ mb: 4 }}>
           <Paper 
             elevation={3} 
             sx={{ 
