@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import JobBoard from './pages/JobBoard';
 import ARVRSim from './pages/ARVRSim';
+import ARVRSim3D from './pages/ARVRSim3D';
 import LessonPage from './pages/LessonPage';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/jobs" element={<JobBoard />} />
               <Route path="/arvr" element={<ARVRSim />} />
+              <Route path="/arvr-3d" element={<ARVRSim3D />} />
             </Routes>
           </Router>
         </Box>
