@@ -7,11 +7,9 @@ import {
   Box, 
   Sphere, 
   Cylinder,
-  Environment,
   Sky,
   Grid,
-  Html,
-  useGLTF
+  Html
 } from '@react-three/drei';
 import {
   Box as MuiBox,
@@ -431,8 +429,8 @@ function Scene3D({ simulationType, onTaskComplete, tasks, completedTasks }) {
         />
       )}
 
-      {/* Lighting for scene */}
-      <Environment preset="warehouse" />
+      {/* Additional lighting */}
+      <hemisphereLight color="#ffffff" groundColor="#444444" intensity={0.8} />
     </>
   );
 }
