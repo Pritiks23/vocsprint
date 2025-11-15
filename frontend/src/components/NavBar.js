@@ -13,7 +13,7 @@ export default function NavBar() {
           <Button color="inherit" component={Link} to="/">Home</Button>
           <Button color="inherit" component={Link} to="/dashboard">Dashboard</Button>
           <Button color="inherit" component={Link} to="/jobs">Job Board</Button>
-          <Button color="inherit" component={Link} to="/sim">AR/VR Sim</Button>
+          <Button color="inherit" component={Link} to="/arvr">AR/VR Sim</Button>
         </Box>
       </Toolbar>
     </AppBar>
