@@ -30,7 +30,11 @@ import {
   ListItemText,
   ListItemIcon,
   Alert,
-  Tooltip
+  Tooltip,
+  Stepper,
+  Step,
+  StepLabel,
+  Badge
 } from '@mui/material';
 import {
   CheckCircle,
@@ -42,7 +46,10 @@ import {
   Timer,
   EmojiEvents,
   Refresh,
-  ArrowBack
+  ArrowBack,
+  Star,
+  PlayArrow,
+  CheckCircleOutline
 } from '@mui/icons-material';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
